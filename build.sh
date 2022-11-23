@@ -10,6 +10,7 @@ echo "start compiling"
 docker run --rm -v "$PWD/$directory":/home rustpython_compiler
 echo "finished compiling"
 
-rm run_directory/*
-cp "$PWD/$directory/target/debug/$directory" run_directory/run
-cp $PWD/$directory/src/*.py run_directory
+project_root=$PWD
+rm -rf run_directory/*
+cp "$project_root/$directory/target/debug/$directory" run_directory/run
+cd "$project_root/$directory/src" && rsync -R **/*.py $project_root/run_directory || true && cp *.py $project_root/run_directory/ || true && cd $project_root

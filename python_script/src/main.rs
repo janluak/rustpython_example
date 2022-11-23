@@ -4,8 +4,6 @@ use vm::{Interpreter};
 
 fn py_main(interp: &Interpreter) -> vm::PyResult {
     interp.enter(|vm| {
-        vm.insert_sys_path(vm.new_pyobj("./"))
-            .expect("add path");
         let module = vm.import("main_module", None, 0)?;
         let name_func = module.get_attr("main_func", vm)?;
         let result = vm.invoke(&name_func, ())?;
