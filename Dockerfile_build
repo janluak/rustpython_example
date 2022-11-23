@@ -9,5 +9,7 @@ WORKDIR /home
 ENV RUST_BACKTRACE=full
 
 RUN cargo install --git https://github.com/RustPython/RustPython.git --features=ssl
+RUN rustpython --install-pip
 
-ENTRYPOINT cargo build
+ENTRYPOINT if [ -f requirements.txt ]; then rustpython -m pip install -r requirements.txt; fi && \
+ cargo build
