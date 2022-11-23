@@ -1,5 +1,5 @@
 [package]
-name = "from_pip_with_ctypes"
+name = "from_pip_with_setuptools"
 version = "0.1.0"
 edition = "2021"
 
