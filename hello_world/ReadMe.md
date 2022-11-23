@@ -1,0 +1,3 @@
+# Rust hello world
+This is just the example of `cargo new hello_world` with nothing concerning rustpython.
+Just for demonstration of the scrips and to ensure that the basic setup works... 

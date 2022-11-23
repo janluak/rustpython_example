@@ -1,0 +1,10 @@
+[package]
+name = "rustpython_example_hello_embed"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rustpython-vm = { git = "https://github.com/RustPython/RustPython.git", rev = "f885db8c61514f069979861f6b3bd83292086231"}
+rustpython-stdlib = { git = "https://github.com/RustPython/RustPython.git", rev = "f885db8c61514f069979861f6b3bd83292086231" , optional = true }

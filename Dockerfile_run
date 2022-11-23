@@ -1,0 +1,5 @@
+FROM debian
+WORKDIR /home
+ENV RUST_BACKTRACE=full
+
+ENTRYPOINT /bin/bash
