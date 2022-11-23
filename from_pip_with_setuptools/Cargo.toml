@@ -1,0 +1,15 @@
+[package]
+name = "from_pip_with_ctypes"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["freeze-stdlib"]
+freeze-stdlib = ["rustpython-vm/freeze-stdlib", "rustpython-pylib/freeze-stdlib", "rustpython-stdlib"]
+
+[dependencies]
+rustpython-vm = { git = "https://github.com/RustPython/RustPython.git", rev = "f885db8c61514f069979861f6b3bd83292086231", features=[ "importlib" ] }
+rustpython-stdlib = { git = "https://github.com/RustPython/RustPython.git", rev = "f885db8c61514f069979861f6b3bd83292086231" , optional = true }
+rustpython-pylib = { git = "https://github.com/RustPython/RustPython.git", rev = "f885db8c61514f069979861f6b3bd83292086231" , default-features = false, optional = true }
