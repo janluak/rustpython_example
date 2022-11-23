@@ -11,5 +11,5 @@ ENV RUST_BACKTRACE=full
 RUN cargo install --git https://github.com/RustPython/RustPython.git --features=ssl
 RUN rustpython --install-pip
 
-ENTRYPOINT if [ -f requirements.txt ]; then rustpython -m pip install -r requirements.txt; fi && \
+ENTRYPOINT if [ -f requirements.txt ]; then ./install.sh; fi && \
  cargo build
