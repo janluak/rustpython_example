@@ -4,7 +4,7 @@ use vm::{builtins::PyStrRef, Interpreter};
 
 fn py_main(interp: &Interpreter) -> vm::PyResult<PyStrRef> {
     interp.enter(|vm| {
-        vm.insert_sys_path(vm.new_pyobj("examples"))
+        vm.insert_sys_path(vm.new_pyobj("./"))
             .expect("add path");
         let module = vm.import("package_embed", None, 0)?;
         let name_func = module.get_attr("context", vm)?;
