@@ -4,12 +4,14 @@ See original files [package_embed.rs](https://github.com/RustPython/RustPython/b
 
 ## Issues
 Not working out of the box.
-`Cargo.toml` was modified for being able to compile but at runtime main thread panics with:
+`Cargo.toml` was modified for being able to compile and `vm.add_frozen(rustpython_pylib::frozen_stdlib());` as added for setting up the vm.
+
+Still, python cannot run as a module isn't found.
 ```
-Error in sys.excepthook:
-lost sys.stderr
-RuntimeError: lost sys.stderr
-Original exception was:
-lost sys.stderr
-ImportError: No such frozen object named codecs
+File "/home/./package_embed.py", line 1, in <module>
+    from dataclasses import dataclass
+  File "dataclasses", line 5, in <module>
+  File "inspect", line 35, in <module>
+  File "dis", line 1, in <module>
+ModuleNotFoundError: No module named '_dis'
 ```

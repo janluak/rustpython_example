@@ -15,7 +15,11 @@ fn py_main(interp: &Interpreter) -> vm::PyResult {
 
 fn main() -> ExitCode {
     let interp = vm::Interpreter::with_init(Default::default(), |vm| {
+        #[cfg(feature = "stdlib")]
         vm.add_native_modules(rustpython_stdlib::get_module_inits());
+
+        #[cfg(feature = "freeze-stdlib")]
+        vm.add_frozen(rustpython_pylib::frozen_stdlib());
     });
     let result = py_main(&interp);
     ExitCode::from(interp.run(|_vm| result))
